@@ -24,7 +24,7 @@ const Slider = () => {
 				New Arrivals /
 			</div>
 			<div>
-				<Carousel enableAutoPlay breakPoints={breakPoints}>
+				<Carousel enableAutoPlay autoPlaySpeed={5000} breakPoints={breakPoints}>
 					{product &&
 						product.slice(10, product.length).map((item) => {
 							const { id, title, rating, price, image } = item;
