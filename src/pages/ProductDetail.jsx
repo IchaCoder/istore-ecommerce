@@ -13,6 +13,9 @@ import {
 	showSingleProduct,
 	setLoadingFalse,
 	setLoadingTrue,
+	increaseQuantity,
+	decreaseQuantity,
+	resetQuantity,
 } from "../redux/actions";
 import Loading from "../component/Loading";
 
@@ -21,6 +24,8 @@ const Productdetail = () => {
 	const dispatch = useDispatch();
 	const product = useSelector((state) => state.showProducts.singleProduct);
 	const loading = useSelector((state) => state.showProducts.loading);
+	const quantity = useSelector((state) => state.showProducts.quantity);
+	console.log(quantity);
 
 	const { price, category, image, title, description } = product;
 
@@ -40,6 +45,12 @@ const Productdetail = () => {
 	useEffect(() => {
 		fetchSinglePost();
 	}, []);
+
+	useEffect(() => {
+		if (quantity < 0) {
+			dispatch(resetQuantity());
+		}
+	}, [quantity]);
 
 	if (loading) {
 		return <Loading />;
@@ -62,11 +73,17 @@ const Productdetail = () => {
 				<p className="ml-6">{description}</p>
 				<h2 className="m-6 font-bold text-2xl">${price}</h2>
 				<div className="max-w-pref m-auto flex font-bold p-4 bg-gray-300 rounded shadow-lg">
-					<div className="flex-1 grid place-items-center text-primary cursor-pointer">
+					<div
+						onClick={() => dispatch(decreaseQuantity())}
+						className="flex-1 grid place-items-center text-primary cursor-pointer"
+					>
 						<AiOutlineMinus />
 					</div>
-					<div className="flex-1 grid place-items-center">0</div>
-					<div className="flex-1 grid place-items-center text-primary cursor-pointer">
+					<div className="flex-1 grid place-items-center">{quantity}</div>
+					<div
+						onClick={() => dispatch(increaseQuantity())}
+						className="flex-1 grid place-items-center text-primary cursor-pointer"
+					>
 						<AiOutlinePlus />
 					</div>
 				</div>

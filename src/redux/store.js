@@ -5,6 +5,7 @@ const initialState = {
 	products: [],
 	singleProduct: {},
 	loading: false,
+	quantity: 0,
 };
 
 const showProductsReducer = (state = initialState, { type, payload }) => {
@@ -22,6 +23,18 @@ const showProductsReducer = (state = initialState, { type, payload }) => {
 
 	if (type === "SET_LOADING_FALSE") {
 		return { ...state, loading: false };
+	}
+
+	if (type === "INCREASE_QUANTITY") {
+		return { ...state, quantity: state.quantity + 1 };
+	}
+
+	if (type === "DECREASE_QUANTITY") {
+		return { ...state, quantity: state.quantity - 1 };
+	}
+
+	if (type === "RESET_QUANTITY") {
+		return { ...state, quantity: 0 };
 	}
 	return state;
 };
