@@ -6,6 +6,7 @@ import { showModal } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { CgMenuGridR } from "react-icons/cg";
 import { Link } from "react-router-dom";
+import { AiOutlineShoppingCart } from "react-icons/all";
 
 const Nav = () => {
 	const [scrollPosition, setScrollPosition] = useState(0);
@@ -29,8 +30,8 @@ const Nav = () => {
 			className={` ${
 				scrollPosition > 150
 					? `bg-white text-primary sticky top-0 left-0 z-10`
-					: ""
-			} flex p-6 text-white transform transition-all duration-500 shadow-2xl`}
+					: "text-white"
+			} flex p-6  transform transition-all duration-500 shadow-2xl`}
 		>
 			<button
 				className="text-xl md:hidden"
@@ -63,15 +64,27 @@ const Nav = () => {
 					</Link>
 				</ul>
 			</div>
-			<button
-				className={`${
-					scrollPosition > 150
-						? `hover:bg-primary hover:text-white sticky top-0 left-0`
-						: ""
-				} px-4 uppercase outline rounded-lg hover:bg-white hover:text-primary transition-all duration-500`}
-			>
-				log in
-			</button>
+			<div className="">
+				<button className="mr-4 relative pt-2">
+					<div
+						className={`absolute right-0 -top-1 color-red bg-blue-700 h-4 w-4 text-xs rounded-lg ${
+							scrollPosition > 150 && "text-white"
+						} `}
+					>
+						1
+					</div>
+					<AiOutlineShoppingCart className="w-5 h-5" />
+				</button>
+				<button
+					className={`${
+						scrollPosition > 150
+							? `hover:bg-primary hover:text-white sticky top-0 left-0`
+							: ""
+					} px-4 py-2 uppercase outline rounded-lg hover:bg-white hover:text-primary transition-all duration-500`}
+				>
+					log in
+				</button>
+			</div>
 			<Overlay />
 		</nav>
 	);
