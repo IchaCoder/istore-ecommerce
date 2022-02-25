@@ -30,8 +30,8 @@ const Nav = () => {
 			className={` ${
 				scrollPosition > 150
 					? `bg-white text-primary sticky top-0 left-0 z-10`
-					: ""
-			} flex p-6 text-white transform transition-all duration-500 shadow-2xl`}
+					: "text-white"
+			} flex p-6  transform transition-all duration-500 shadow-2xl`}
 		>
 			<button
 				className="text-xl md:hidden"
