@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
 	AiOutlineMinus,
 	AiOutlinePlus,
@@ -20,12 +20,12 @@ import {
 import Loading from "../component/Loading";
 
 const Productdetail = () => {
+	const [disabled, setDisabled] = useState(true);
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const product = useSelector((state) => state.showProducts.singleProduct);
 	const loading = useSelector((state) => state.showProducts.loading);
 	const quantity = useSelector((state) => state.showProducts.quantity);
-	console.log(quantity);
 
 	const { price, category, image, title, description } = product;
 
@@ -50,6 +50,15 @@ const Productdetail = () => {
 		if (quantity < 0) {
 			dispatch(resetQuantity());
 		}
+	}, [quantity]);
+
+	useEffect(() => {
+		if (quantity > 0) {
+			setDisabled(false);
+		} else {
+			setDisabled(true);
+		}
+		console.log(disabled);
 	}, [quantity]);
 
 	if (loading) {
@@ -88,7 +97,8 @@ const Productdetail = () => {
 					</div>
 				</div>
 				<button
-					className={`log p-2 my-10 w-pref flex justify-center gap-3 mx-auto uppercase outline rounded-lg hover:bg-primary hover:text-white text-primary transition-all duration-500`}
+					className={`log p-2 my-10 w-pref flex justify-center gap-3 mx-auto uppercase outline rounded-lg hover:bg-primary hover:text-white text-primary transition-all duration-500 disabled:cursor-not-allowed`}
+					disabled={disabled}
 				>
 					<div>
 						{" "}

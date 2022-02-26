@@ -1,7 +1,6 @@
 /** @format */
 
 import { useState } from "react";
-import Productsgrid from "./component/ProductsGrid";
 import Home from "./pages/Home";
 import Nav from "./component/Nav";
 import About from "./pages/About";
@@ -10,7 +9,6 @@ import Error from "./pages/Error";
 import Productdetail from "./pages/ProductDetail";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./component/Footer";
-// import { Router } from "react-router";
 
 function App() {
 	return (
