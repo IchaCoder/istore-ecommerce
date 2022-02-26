@@ -66,8 +66,12 @@ const Nav = () => {
 			</div>
 			<div className="flex gap-4">
 				<div className="cursor-pointer relative mt-2">
-					<div className="absolute h-3 w-3 grid place-items-center -top-1 rounded-md text-xs bg-blue-700 -right-1">
-						1
+					<div
+						className={`${
+							scrollPosition > 150 && "text-white bg-primary"
+						} absolute h-4 w-3 grid place-items-center text-primary bg-white -top-1 rounded text-xs bg- -right-1`}
+					>
+						0
 					</div>
 					<AiOutlineShoppingCart className="w-5 h-5" />
 				</div>
