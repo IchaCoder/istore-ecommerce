@@ -1,12 +1,8 @@
 /** @format */
 
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import {
-	AiOutlineMinus,
-	AiOutlinePlus,
-	AiOutlineShoppingCart,
-} from "react-icons/ai";
+import React, { useEffect } from "react";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import {
@@ -18,9 +14,9 @@ import {
 	resetQuantity,
 } from "../redux/actions";
 import Loading from "../component/Loading";
+import Addcart from "../AddCart";
 
 const Productdetail = () => {
-	const [disabled, setDisabled] = useState(true);
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const product = useSelector((state) => state.showProducts.singleProduct);
@@ -50,15 +46,6 @@ const Productdetail = () => {
 		if (quantity < 0) {
 			dispatch(resetQuantity());
 		}
-	}, [quantity]);
-
-	useEffect(() => {
-		if (quantity > 0) {
-			setDisabled(false);
-		} else {
-			setDisabled(true);
-		}
-		console.log(disabled);
 	}, [quantity]);
 
 	if (loading) {
@@ -96,16 +83,7 @@ const Productdetail = () => {
 						<AiOutlinePlus />
 					</div>
 				</div>
-				<button
-					className={`log p-2 my-10 w-pref flex justify-center gap-3 mx-auto uppercase outline rounded-lg hover:bg-primary hover:text-white text-primary transition-all duration-500 disabled:cursor-not-allowed`}
-					disabled={disabled}
-				>
-					<div>
-						{" "}
-						<AiOutlineShoppingCart className="w-5 h-5" />
-					</div>
-					<div>Add to cart</div>
-				</button>
+				<Addcart quantity={quantity} />
 				<div className="pb-10"></div>
 			</div>
 		</article>
