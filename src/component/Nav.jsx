@@ -13,7 +13,6 @@ const Nav = () => {
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.showProducts.cart);
-	console.log(cart);
 
 	const handleScroll = () => {
 		const position = window.pageYOffset;
