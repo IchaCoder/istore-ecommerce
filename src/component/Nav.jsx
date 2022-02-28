@@ -64,7 +64,7 @@ const Nav = () => {
 					</Link>
 				</ul>
 			</div>
-			<div className="flex gap-4">
+			<div className="flex gap-8">
 				<div className="cursor-pointer relative mt-2">
 					<div
 						className={`${
