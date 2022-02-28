@@ -6,6 +6,7 @@ const initialState = {
 	singleProduct: {},
 	loading: false,
 	quantity: 0,
+	cart: [],
 };
 
 const showProductsReducer = (state = initialState, { type, payload }) => {
@@ -35,6 +36,17 @@ const showProductsReducer = (state = initialState, { type, payload }) => {
 
 	if (type === "RESET_QUANTITY") {
 		return { ...state, quantity: 0 };
+	}
+	if (type === "ADD_ITEM") {
+		const itemExist = state.cart.find((item) => item.id == payload.id);
+		if (itemExist) {
+			return { ...state };
+		} else {
+			return {
+				...state,
+				cart: [...state.cart, payload],
+			};
+		}
 	}
 	return state;
 };

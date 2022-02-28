@@ -7,10 +7,13 @@ import { useDispatch } from "react-redux";
 import { CgMenuGridR } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/all";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const dispatch = useDispatch();
+	const cart = useSelector((state) => state.showProducts.cart);
+	console.log(cart);
 
 	const handleScroll = () => {
 		const position = window.pageYOffset;
@@ -71,7 +74,7 @@ const Nav = () => {
 							scrollPosition > 150 && "text-white bg-primary"
 						} absolute h-4 w-3 grid place-items-center text-primary bg-white -top-1 rounded text-xs bg- -right-1`}
 					>
-						0
+						{cart.length}
 					</div>
 					<AiOutlineShoppingCart className="w-5 h-5" />
 				</div>
