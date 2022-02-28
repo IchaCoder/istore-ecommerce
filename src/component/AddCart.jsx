@@ -16,7 +16,7 @@ const Addcart = ({ quantity }) => {
 
 	return (
 		<button
-			className={`log p-2 my-10 w-pref flex justify-center gap-3 mx-auto uppercase outline rounded-lg hover:bg-primary hover:text-white text-primary transition-all duration-500 disabled:cursor-not-allowed`}
+			className={`log p-2 my-10 w-pref flex justify-center gap-3 mx-auto uppercase outline rounded-lg hover:bg-primary hover:text-white text-primary transition-all duration-500 disabled:cursor-not-allowed disabled:bg-gray-400`}
 			disabled={disabled}
 		>
 			<div>
