@@ -10,6 +10,7 @@ import Productdetail from "./pages/ProductDetail";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./component/Footer";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 
 function App() {
 	return (
@@ -24,6 +25,7 @@ function App() {
 						<Route path="product/:id" element={<Productdetail />} />
 						<Route path="*" element={<Error />} />
 						<Route path="login" element={<Login />} />
+						<Route path="signup" element={<Signup />} />
 					</Routes>
 				</div>
 				<Footer />

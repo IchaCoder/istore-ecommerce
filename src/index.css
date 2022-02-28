@@ -22,9 +22,9 @@ code {
 		monospace;
 }
 
-* {
+/* * {
 	outline: 1px solid red;
-}
+} */
 
 .modal-overlay {
 	background: rgba(0, 0, 0, 0.4);

@@ -5,7 +5,7 @@ import Overlay from "./Overlay";
 import { showModal } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { CgMenuGridR } from "react-icons/cg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/all";
 import { useSelector } from "react-redux";
 
@@ -13,6 +13,7 @@ const Nav = () => {
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.showProducts.cart);
+	const navigate = useNavigate();
 
 	const handleScroll = () => {
 		const position = window.pageYOffset;
@@ -78,15 +79,14 @@ const Nav = () => {
 					<AiOutlineShoppingCart className="w-5 h-5" />
 				</div>
 				<button
+					onClick={() => navigate("/login")}
 					className={`${
 						scrollPosition > 150
 							? `hover:bg-primary hover:text-white sticky top-0 left-0`
 							: ""
 					} px-4 uppercase outline rounded-lg hover:bg-white hover:text-primary transition-all duration-500`}
 				>
-					<Link to="/login" className="p-1">
-						log in
-					</Link>
+					log in
 				</button>
 			</div>
 			<Overlay />
