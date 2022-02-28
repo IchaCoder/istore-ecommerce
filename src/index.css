@@ -22,9 +22,9 @@ code {
 		monospace;
 }
 
-/* * {
+* {
 	outline: 1px solid red;
-} */
+}
 
 .modal-overlay {
 	background: rgba(0, 0, 0, 0.4);
@@ -60,6 +60,17 @@ code {
 	margin-bottom: 2em;
 }
 
+input {
+	border: none;
+	outline: none;
+}
+
+input:focus {
+	border-left: 2px;
+	border-color: #1c538e;
+	border-style: solid;
+	border-bottom: none;
+}
 @media (min-width: 768px) {
 	.card {
 		transition: all 0.2s linear;

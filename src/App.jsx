@@ -9,6 +9,7 @@ import Error from "./pages/Error";
 import Productdetail from "./pages/ProductDetail";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./component/Footer";
+import Login from "./pages/Login";
 
 function App() {
 	return (
@@ -22,6 +23,7 @@ function App() {
 						<Route path="policy" element={<Policy />} />
 						<Route path="product/:id" element={<Productdetail />} />
 						<Route path="*" element={<Error />} />
+						<Route path="login" element={<Login />} />
 					</Routes>
 				</div>
 				<Footer />

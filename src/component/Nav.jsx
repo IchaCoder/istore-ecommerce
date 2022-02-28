@@ -84,7 +84,9 @@ const Nav = () => {
 							: ""
 					} px-4 uppercase outline rounded-lg hover:bg-white hover:text-primary transition-all duration-500`}
 				>
-					log in
+					<Link to="/login" className="p-1">
+						log in
+					</Link>
 				</button>
 			</div>
 			<Overlay />
