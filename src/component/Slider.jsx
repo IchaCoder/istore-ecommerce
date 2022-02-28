@@ -38,11 +38,11 @@ const Slider = () => {
 												style={{ height: "240px", objectFit: "cover" }}
 											/>
 										</div>
-										<div className="flex">
+										<div>
 											<div className="flex-1 p-3 pl-1 font-bold text-lg text-primary">
 												{title}
 											</div>
-											<h2 className="p-3 flex-1 grid justify-items-end font-extrabold text-lg mr-10">
+											<h2 className="p-3 flex-1 font-extrabold text-lg mr-10">
 												${price}
 											</h2>
 										</div>
