@@ -55,3 +55,10 @@ export const resetQuantity = () => {
 		type: "RESET_QUANTITY",
 	};
 };
+
+export const addItem = (product) => {
+	return {
+		type: "ADD_ITEM",
+		payload: product,
+	};
+};
