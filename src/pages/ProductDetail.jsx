@@ -14,7 +14,7 @@ import {
 	resetQuantity,
 } from "../redux/actions";
 import Loading from "../component/Loading";
-import Addcart from "../AddCart";
+import Addcart from "../component/AddCart";
 
 const Productdetail = () => {
 	const { id } = useParams();
