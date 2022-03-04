@@ -42,11 +42,15 @@ const Productdetail = () => {
 		fetchSinglePost();
 	}, []);
 
+	// useEffect(() => {
+	// 	if (quantity < 0) {
+	// 		dispatch(resetQuantity());
+	// 	}
+	// }, [quantity]);
+
 	useEffect(() => {
-		if (quantity < 0) {
-			dispatch(resetQuantity());
-		}
-	}, [quantity]);
+		dispatch(resetQuantity());
+	}, []);
 
 	if (loading) {
 		return <Loading />;

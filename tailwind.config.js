@@ -12,6 +12,8 @@ module.exports = {
 		"./src/component/Loadig.jsx",
 		".src/component/Slider.jsx",
 		"./src/pages/Login.jsx",
+		"./src/pages/Signup.jsx",
+		"./src/pages/Cart.jsx",
 	],
 	theme: {
 		extend: {

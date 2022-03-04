@@ -62,3 +62,23 @@ export const addItem = (product) => {
 		payload: product,
 	};
 };
+
+export const deleteItem = (product) => {
+	return {
+		type: "DELETE_ITEM",
+		payload: product,
+	};
+};
+
+export const userAuthenticated = (user) => {
+	return {
+		type: "AUTHENTICATED",
+		payload: user,
+	};
+};
+export const userNotAuthenticated = (user) => {
+	return {
+		type: "NOT_AUTHENTICATED",
+		payload: user,
+	};
+};

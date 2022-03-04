@@ -68,7 +68,10 @@ const Nav = () => {
 				</ul>
 			</div>
 			<div className="flex gap-8">
-				<div className="cursor-pointer relative mt-2">
+				<div
+					className="cursor-pointer relative mt-2"
+					onClick={() => navigate("/cart")}
+				>
 					<div
 						className={`${
 							scrollPosition > 150 && "text-white bg-primary"

@@ -1,6 +1,6 @@
 /** @format */
 
-import { useState } from "react";
+import { useEffect } from "react";
 import Home from "./pages/Home";
 import Nav from "./component/Nav";
 import About from "./pages/About";
@@ -11,8 +11,25 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./component/Footer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Cart from "./pages/Cart";
+import { getAuth } from "firebase/auth";
+import { app } from "./firebase";
+import { userAuthenticated, userNotAuthenticated } from "./redux/actions";
+import { useDispatch } from "react-redux";
 
 function App() {
+	const auth = getAuth(app);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		auth.onAuthStateChanged((user) => {
+			if (user) {
+				dispatch(userAuthenticated(user));
+			} else {
+				dispatch(userNotAuthenticated(user));
+			}
+		});
+	}, []);
 	return (
 		<Router>
 			<>
@@ -26,6 +43,7 @@ function App() {
 						<Route path="*" element={<Error />} />
 						<Route path="login" element={<Login />} />
 						<Route path="signup" element={<Signup />} />
+						<Route path="cart" element={<Cart />} />
 					</Routes>
 				</div>
 				<Footer />
