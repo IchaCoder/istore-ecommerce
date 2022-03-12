@@ -2,13 +2,16 @@
 
 import React from "react";
 import { IoIosArrowBack } from "react-icons/all";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { app } from "../firebase";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const Signup = () => {
+	const auth = getAuth(app);
 	const navigate = useNavigate();
+
 	const formik = useFormik({
 		initialValues: {
 			name: "",
@@ -25,8 +28,22 @@ const Signup = () => {
 				.min(6, "Too short")
 				.required("Password is required"),
 		}),
-		onSubmit: (values, { resetForm }) => {
-			console.log(values);
+		onSubmit: ({ email, password }, { resetForm }) => {
+			// console.log(values);
+			createUserWithEmailAndPassword(auth, email, password)
+				.then((userCredential) => {
+					const user = userCredential.user;
+					console.log(user);
+					navigate("/login");
+					// Signed in
+					// ...
+				})
+				.catch((error) => {
+					// const errorCode = error.code;
+					const errorMessage = error.message;
+					console.log(errorMessage);
+					// ..
+				});
 			resetForm();
 		},
 	});

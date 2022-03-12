@@ -51,7 +51,7 @@ const showProductsReducer = (state = initialState, { type, payload }) => {
 
 	if (type === "DELETE_ITEM") {
 		const filteredItem = state.cart.filter((item) => item.id !== payload);
-		console.log(filteredItem);
+
 		return {
 			...state,
 			cart: filteredItem,
@@ -64,18 +64,7 @@ const modalBool = {
 	showModal: true,
 };
 
-const authReducer = (state = null, { type, payload }) => {
-	console.log(state);
-	if (type === "AUTHENTICATED") {
-		console.log("hello ");
-	}
-	if (type === "NOT_AUTHENTICATED") {
-		console.log("not authenticated");
-	}
-	return state;
-};
-
-const modalReducer = (state = modalBool, { type, payload }) => {
+const modalReducer = (state = modalBool, { type }) => {
 	if (type === "SHOW_MODAL") {
 		return { ...state, showModal: false };
 	}
@@ -89,7 +78,6 @@ const modalReducer = (state = modalBool, { type, payload }) => {
 const reducers = combineReducers({
 	showProducts: showProductsReducer,
 	showModal: modalReducer,
-	auth: authReducer,
 });
 
 const store = createStore(

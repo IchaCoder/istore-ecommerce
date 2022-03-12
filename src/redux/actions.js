@@ -69,16 +69,3 @@ export const deleteItem = (product) => {
 		payload: product,
 	};
 };
-
-export const userAuthenticated = (user) => {
-	return {
-		type: "AUTHENTICATED",
-		payload: user,
-	};
-};
-export const userNotAuthenticated = (user) => {
-	return {
-		type: "NOT_AUTHENTICATED",
-		payload: user,
-	};
-};

@@ -14,7 +14,6 @@ const Cart = () => {
 	const cartItems = useSelector((state) => state.showProducts.cart);
 	const state = useSelector((state) => state.showProducts.quantity);
 	const product = useSelector((state) => state.showProducts.singleProduct);
-	console.log(product);
 
 	const dispatch = useDispatch();
 
