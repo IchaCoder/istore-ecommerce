@@ -48,6 +48,15 @@ const showProductsReducer = (state = initialState, { type, payload }) => {
 			};
 		}
 	}
+
+	if (type === "DELETE_ITEM") {
+		const filteredItem = state.cart.filter((item) => item.id !== payload);
+
+		return {
+			...state,
+			cart: filteredItem,
+		};
+	}
 	return state;
 };
 
@@ -55,7 +64,7 @@ const modalBool = {
 	showModal: true,
 };
 
-const modalReducer = (state = modalBool, { type, payload }) => {
+const modalReducer = (state = modalBool, { type }) => {
 	if (type === "SHOW_MODAL") {
 		return { ...state, showModal: false };
 	}

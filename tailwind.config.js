@@ -11,11 +11,15 @@ module.exports = {
 		"./src/pages/ProductDetail.jsx",
 		"./src/component/Loadig.jsx",
 		".src/component/Slider.jsx",
+		"./src/pages/Login.jsx",
+		"./src/pages/Signup.jsx",
+		"./src/pages/Cart.jsx",
 	],
 	theme: {
 		extend: {
 			colors: {
 				primary: "#1C538E",
+				inputBg: "#e8f0fe",
 			},
 			maxWidth: {
 				pref: "90%",
@@ -23,6 +27,7 @@ module.exports = {
 			width: {
 				sm: "70%",
 				pref: "90%",
+				lg: "40%",
 			},
 			aspectRatio: {
 				new: 1 / 2,
@@ -35,6 +40,9 @@ module.exports = {
 			},
 			height: {
 				hh: "500px",
+			},
+			boxShadow: {
+				inner2: " 1px 1px 3px 0px black inset",
 			},
 		},
 	},

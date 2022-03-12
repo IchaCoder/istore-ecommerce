@@ -1,19 +1,22 @@
 /** @format */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Overlay from "./Overlay";
 import { showModal } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { CgMenuGridR } from "react-icons/cg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/all";
 import { useSelector } from "react-redux";
+import Login from "./Login";
+import { AppContext } from "../context";
 
 const Nav = () => {
 	const [scrollPosition, setScrollPosition] = useState(0);
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.showProducts.cart);
-	console.log(cart);
+	const navigate = useNavigate();
+	const { currentUser } = useContext(AppContext);
 
 	const handleScroll = () => {
 		const position = window.pageYOffset;
@@ -68,7 +71,10 @@ const Nav = () => {
 				</ul>
 			</div>
 			<div className="flex gap-8">
-				<div className="cursor-pointer relative mt-2">
+				<div
+					className="cursor-pointer relative mt-2"
+					onClick={() => navigate("/cart")}
+				>
 					<div
 						className={`${
 							scrollPosition > 150 && "text-white bg-primary"
@@ -78,15 +84,21 @@ const Nav = () => {
 					</div>
 					<AiOutlineShoppingCart className="w-5 h-5" />
 				</div>
-				<button
-					className={`${
-						scrollPosition > 150
-							? `hover:bg-primary hover:text-white sticky top-0 left-0`
-							: ""
-					} px-4 uppercase outline rounded-lg hover:bg-white hover:text-primary transition-all duration-500`}
-				>
-					log in
-				</button>
+
+				{currentUser ? (
+					<button
+						onClick={() => navigate("/profile")}
+						className={`${
+							scrollPosition > 150
+								? `hover:bg-primary hover:text-white sticky top-0 left-0`
+								: ""
+						} px-4 uppercase outline rounded-lg hover:bg-white hover:text-primary transition-all duration-500`}
+					>
+						profile
+					</button>
+				) : (
+					<Login scrollPosition={scrollPosition} />
+				)}
 			</div>
 			<Overlay />
 		</nav>

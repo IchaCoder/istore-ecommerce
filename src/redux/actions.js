@@ -62,3 +62,10 @@ export const addItem = (product) => {
 		payload: product,
 	};
 };
+
+export const deleteItem = (product) => {
+	return {
+		type: "DELETE_ITEM",
+		payload: product,
+	};
+};
